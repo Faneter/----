@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='zh'>
+    <head>
+        <title>唱名练习</title>
+        <script src="scripts/random.js"></script>
+        <script>
+            var names = ['do', 're', 'mi', 'fa', 'sol', 'la', 'xi']
+        </script>
+    </head>
+    <body>
+        <div>
+            <div id='syllable'></div>
+            <button class='button'></button>
+            <button class='button'></button>
+            <button class='button'></button>
+            <button class='button'></button>
+
+        </div>
+        <script>
+            var buttons = document.getElementsByClassName('button')
+
+            var syllable = document.getElementById('syllable')
+
+            var num = 0
+            function refresh() {
+                num = getRandomIntergersWithoutSelectedNum(1,7,1,num)[0]
+                syllable.innerText = num
+                var array = getRandomIntergersWithSelectedNum(1,7,4,num)
+                for(i = 0; i < 4; i++) {
+                    buttons[i].innerText = names[array[i] - 1]
+                    buttons[i].style = "color: black;"
+                }
+            }
+
+            refresh()
+
+            for (j = 0; j < buttons.length; j++) {
+                buttons[j].onclick = function() {
+                    for (i = 0; i < names.length; i++) {
+                        if (this.innerText == names[i]) {
+                            if (i == num - 1) {
+                                refresh()
+                            } else {
+                                this.style = "color: red;"
+                            }
+                            break
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
