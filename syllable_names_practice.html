@@ -25,7 +25,7 @@
             function refresh() {
                 num = getRandomIntergersWithoutSelectedNum(1,7,1,num)[0]
                 syllable.innerText = num
-                var array = getRandomIntergersWithSelectedNum(1,7,4,num)
+                var array = getRandomNonrepetitiveIntergersWithSelectedNum(1,7,4,num)
                 for(i = 0; i < 4; i++) {
                     buttons[i].innerText = names[array[i] - 1]
                     buttons[i].style = "color: black;"
